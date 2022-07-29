@@ -8,6 +8,13 @@ from kivy.uix.widget import Widget
 
 from kivy.properties import StringProperty
 
+####日本語対応用コード
+from kivy.core.text import LabelBase, DEFAULT_FONT  # 追加分
+from kivy.resources import resource_add_path  # 追加分
+resource_add_path('/System/Library/Fonts')  # 追加分
+LabelBase.register(DEFAULT_FONT, 'Hiragino Sans GB.ttc')  # 追加分
+####日本語対応ここまで
+
 class TitleScreen(Screen):
     pass
 
@@ -24,7 +31,8 @@ class RetireScreen(Screen):
 class CorrectScreen(Screen):
     pass
 
-
+class AllCorrectScreen(Screen):
+    pass
 
 class ScreenApp(App):
     def build(self):
@@ -34,6 +42,7 @@ class ScreenApp(App):
         self.sm.add_widget(WrongAnsScreen(name='wrong'))
         self.sm.add_widget(RetireScreen(name='retire'))
         self.sm.add_widget(CorrectScreen(name='correct'))
+        self.sm.add_widget(AllCorrectScreen(name='all'))
         return self.sm
 
 

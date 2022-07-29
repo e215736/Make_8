@@ -1,3 +1,4 @@
+#:kivy 1.0
 <TitleScreen>:
     BoxLayout:
         BoxLayout:
@@ -84,11 +85,25 @@
             Label:
                 text:'Clear!!'
             BoxLayout:
-
                 Button:
                     text: 'Move to MainView'
                     on_press: root.manager.current = 'main'
             BoxLayout:
                 Button:
                     text: 'Move to title'
+                    on_press: root.manager.current = 'title'
+
+<AllCorrectScreen>
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:'Congratulations!!'
+
+            BoxLayout:
+                Button:
+                    text: 'Move to title'
+                    on_press: root.manager.current = 'title'
+
 
