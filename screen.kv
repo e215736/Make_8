@@ -1,0 +1,78 @@
+<TitleScreen>:
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:'make8'
+            BoxLayout:
+
+                Button:
+                    text: 'Move to MainView'
+                    on_press: root.manager.current = 'main'
+            BoxLayout:
+                Button:
+                    text: 'Close'
+
+<MainScreen>:
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Button:
+                text:'retire'
+                size_hint_y:0.1
+                size_hint_x:0.1
+                on_press: root.manager.current = 'title'
+            Label:
+                text:'question'
+            Label:
+                text:'input value'
+            BoxLayout:
+                size_hint_y: 0.2
+                Button:
+                    text: 'one'
+                Button:
+                    text: 'two'
+                Button:
+                    text: 'three'
+                Button:
+                    text: 'four'
+                Button:
+                    text: 'Delete'
+                    on_press: root.manager.current = 'title'
+
+            BoxLayout:
+                size_hint_y: 0.2
+                Button:
+                    text: '+'
+                Button:
+                    text: '-'
+                Button:
+                    text: '*'
+                Button:
+                    text: '/'
+                Button:
+                    text: 'OK'
+                    on_press: root.manager.current = 'title'
+
+
+<WrongAnsScreen>
+
+<RetireScreen>
+
+<CorrectScreen>
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:'Clear!!'
+            BoxLayout:
+
+                Button:
+                    text: 'Move to MainView'
+                    on_press: root.manager.current = 'main'
+            BoxLayout:
+                Button:
+                    text: 'Move to title'
