@@ -60,6 +60,21 @@
 <WrongAnsScreen>
 
 <RetireScreen>
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:'答えは'
+            Label:
+                text:'2+2+2+2'
+            Label:
+                text:'他にも答えがあるかもしれません'
+            BoxLayout:
+
+                Button:
+                    text: 'Move to TitleView'
+                    on_press: root.manager.current = 'title'
 
 <CorrectScreen>
     BoxLayout:
