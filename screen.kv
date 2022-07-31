@@ -1,4 +1,4 @@
-#:kivy
+#:kivy 2.1.0
 <TitleScreen>:
     BoxLayout:
         BoxLayout:
@@ -28,11 +28,14 @@
             Label:
                 text:'question'
             Label:
-                text:'input value'
+                id: label1
+                text:''
             BoxLayout:
                 size_hint_y: 0.2
                 Button:
+                    id: button1
                     text: 'one'
+                    on_press: root.onPress()
                 Button:
                     text: 'two'
                 Button:
