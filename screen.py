@@ -8,12 +8,21 @@ from kivy.uix.widget import Widget
 
 from kivy.properties import StringProperty
 
+input_formula = []
+
+
 class TitleScreen(Screen):
     pass
 
 
 class MainScreen(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def add(self,num):
+        self.text = "a"
+        input_formula.append(num)
+        self.ids.formula.text = "input_formula"
 
 class WrongAnsScreen(Screen):
     pass
@@ -35,6 +44,10 @@ class ScreenApp(App):
         self.sm.add_widget(RetireScreen(name='retire'))
         self.sm.add_widget(CorrectScreen(name='correct'))
         return self.sm
+
+
+class Fromula():
+    pass
 
 
 if __name__ == '__main__':
