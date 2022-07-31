@@ -1,4 +1,7 @@
+
+from unicodedata import name
 from kivy.app import App
+
 
 #「ScreenManager()」は実装直後には一つの画面しか所持していません
 #そのため、別の画面への遷移したいときには「ScreenManager()」に対して「Screen()」を追加します
@@ -13,7 +16,11 @@ class TitleScreen(Screen):
 
 
 class MainScreen(Screen):
-    pass
+    def onPress(self):
+        value = self.ids.button1.text
+        self.ids.label1.text += value
+        
+        
 
 class WrongAnsScreen(Screen):
     pass
@@ -35,6 +42,7 @@ class ScreenApp(App):
         self.sm.add_widget(RetireScreen(name='retire'))
         self.sm.add_widget(CorrectScreen(name='correct'))
         return self.sm
+ 
 
 
 if __name__ == '__main__':
