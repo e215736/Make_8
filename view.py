@@ -4,3 +4,6 @@ class View:
        
     def showFormula(self,value):
         self.uiFramework.setDisplayFormula(value) #screen.pyのtextにvalueを入れる
+        
+    def showButton(self,value):
+        self.uiFramework.setButtonText(value) #screen.pyのtextにvalueを入れる

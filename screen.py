@@ -28,6 +28,17 @@ class MainScreen(Screen):
         
     def setDisplayFormula(self,text): #問題を画面（問題欄）に表示
         self.ids.label1.text = text
+        
+    def setButtonText(self,text): #問題の式をボタンに表示
+        b1 = text[0]
+        b2 = text[1]
+        b3 = text[2]
+        b4 = text[3]
+        self.ids.button1.text = b1
+        self.ids.button2.text = b2
+        self.ids.button3.text = b3
+        self.ids.button4.text = b4
+        
           
     def onPress(self): #ボタンが押された際にそのボタンのtextを画面（回答欄）に表示
         value = self.ids.button1.text
