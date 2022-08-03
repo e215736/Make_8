@@ -7,13 +7,13 @@
             Label:
                 text:'make8'
             BoxLayout:
-
                 Button:
                     text: 'Move to MainView'
                     on_press: root.manager.current = 'main'
             BoxLayout:
                 Button:
                     text: 'Close'
+                    on_press : app.stop()
 
 <MainScreen>:
     BoxLayout:
@@ -24,7 +24,7 @@
                 text:'retire'
                 size_hint_y:0.1
                 size_hint_x:0.1
-                on_press: root.manager.current = 'title'
+                on_press: root.manager.current = 'retire'
             Label:
                 text:'question'
             Label:
@@ -41,7 +41,6 @@
                     text: 'four'
                 Button:
                     text: 'Delete'
-                    on_press: root.manager.current = 'title'
 
             BoxLayout:
                 size_hint_y: 0.2
@@ -55,10 +54,10 @@
                     text: '/'
                 Button:
                     text: 'OK'
-                    on_press: root.manager.current = 'title'
 
 
 <WrongAnsScreen>
+
 
 <RetireScreen>
     BoxLayout:
