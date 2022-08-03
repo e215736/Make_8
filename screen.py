@@ -1,4 +1,7 @@
+
+from unicodedata import name
 from kivy.app import App
+
 
 #「ScreenManager()」は実装直後には一つの画面しか所持していません
 #そのため、別の画面への遷移したいときには「ScreenManager()」に対して「Screen()」を追加します
@@ -8,8 +11,9 @@ from kivy.uix.widget import Widget
 
 from kivy.properties import StringProperty
 
-input_formula = []
-
+from model import Model
+from view import View
+from controller import Controller
 
 class TitleScreen(Screen):
     pass
@@ -18,11 +22,29 @@ class TitleScreen(Screen):
 class MainScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-    def add(self,num):
-        self.text = "a"
-        input_formula.append(num)
-        self.ids.formula.text = "input_formula"
+        view = View(self)
+        model = Model(view)
+        self.controller = Controller(model)    
+        
+    def setDisplayFormula(self,text): #問題を画面（問題欄）に表示
+        self.ids.label1.text = text
+        
+    def setButtonText(self,text): #問題の式をボタンに表示
+        b1 = text[0]
+        b2 = text[1]
+        b3 = text[2]
+        b4 = text[3]
+        self.ids.button1.text = b1
+        self.ids.button2.text = b2
+        self.ids.button3.text = b3
+        self.ids.button4.text = b4
+        
+          
+    def onPress(self): #ボタンが押された際にそのボタンのtextを画面（回答欄）に表示
+        value = self.ids.button1.text
+        self.ids.label2.text += value
+        
+        
 
 class WrongAnsScreen(Screen):
     pass
@@ -36,6 +58,9 @@ class CorrectScreen(Screen):
 
 
 class ScreenApp(App):
+    def __init__(self, **kwargs):
+       super().__init__(**kwargs)
+       
     def build(self):
         self.sm = ScreenManager()
         self.sm.add_widget(TitleScreen(name='title'))
@@ -44,10 +69,8 @@ class ScreenApp(App):
         self.sm.add_widget(RetireScreen(name='retire'))
         self.sm.add_widget(CorrectScreen(name='correct'))
         return self.sm
-
-
-class Fromula():
-    pass
+    
+    
 
 
 if __name__ == '__main__':
