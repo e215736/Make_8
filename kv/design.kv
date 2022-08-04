@@ -1,0 +1,39 @@
+#:kivy 1.0
+
+# ボタンデザイン
+<Btn@Button>:
+    background_color:(0,0,0,0)
+    background_normal:''
+    text_size: self.width, None
+    halign: 'center'
+    canvas.before:
+        Color:
+            rgba:(5/255,219/255,242/255,1) if self.state=='down' else (11/255,59/255,89/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius:[18]
+
+<MenuBtn@Btn>:
+    font_size: 170*self.width/1600
+
+<GameBtn@Btn>:
+    font_size: 120*self.width/400
+
+# ラベルデザイン
+<Lbl@Label>:
+    color: 240/255, 241/255, 242/255, 1
+
+# 背景付きラベル
+<BackgroundColor@Widget>:
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<BgLbl@Label+BackgroundColor>:
+    background_color: 240/255, 241/255, 242/255, 1
+    color: 11/255, 59/255, 89/255, 1

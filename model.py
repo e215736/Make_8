@@ -10,10 +10,3 @@ class Model:
         
     def setButton(self): #式を入力
         self.view.showButton(self.value) #viewへ通知
-        
-    
-        
-    
-    
-
-         

@@ -1,23 +1,33 @@
 
-from unicodedata import name
 from kivy.app import App
-
-
-#「ScreenManager()」は実装直後には一つの画面しか所持していません
-#そのため、別の画面への遷移したいときには「ScreenManager()」に対して「Screen()」を追加します
 from kivy.uix.screenmanager import ScreenManager, Screen
-
 from kivy.uix.widget import Widget
+import random
 
-from kivy.properties import StringProperty
+# Label日本語対応のためfont追加
+from kivy.core.text import LabelBase, DEFAULT_FONT
+from kivy.resources import resource_add_path
+resource_add_path('/System/Library/Fonts')
+LabelBase.register(DEFAULT_FONT, 'Hiragino Sans GB.ttc')
 
 from model import Model
 from view import View
 from controller import Controller
 
+
 class TitleScreen(Screen):
     pass
 
+
+class Question:
+    # 問題
+    questions = [
+        [1,2,3,8,"3+1+8÷2"],[3,4,5,6,"3+4+6-5"],
+        [2,3,4,8,"4×3-8÷2"],[1,2,4,7,"7+4-2-1"],
+        [1,9,9,9,"9×9÷9-1"],[1,3,4,6,"6×4÷3÷1"]
+        ]
+
+    q_num = [1,2,3,4,5,6]
 
 class MainScreen(Screen):
     def __init__(self, **kwargs):
@@ -39,7 +49,6 @@ class MainScreen(Screen):
         self.ids.button3.text = b3
         self.ids.button4.text = b4
         
-          
     def onPress(self): #ボタンが押された際にそのボタンのtextを画面（回答欄）に表示
         value = self.ids.button1.text
         self.ids.label2.text += value
@@ -57,10 +66,10 @@ class CorrectScreen(Screen):
 
 
 
-class ScreenApp(App):
+class App(App):
     def __init__(self, **kwargs):
-       super().__init__(**kwargs)
-       
+        super().__init__(**kwargs)
+
     def build(self):
         self.sm = ScreenManager()
         self.sm.add_widget(TitleScreen(name='title'))
@@ -69,9 +78,6 @@ class ScreenApp(App):
         self.sm.add_widget(RetireScreen(name='retire'))
         self.sm.add_widget(CorrectScreen(name='correct'))
         return self.sm
-    
-    
-
 
 if __name__ == '__main__':
-    ScreenApp().run()
+    App().run()

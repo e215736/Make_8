@@ -1,0 +1,41 @@
+#:kivy 1.0
+
+<Title>:
+    # 背景
+    canvas.before:
+        Color:
+            rgba: 17/255, 93/255, 140/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+        BoxLayout:
+            padding: [400,0]
+            # タイトル文字
+            Lbl:
+                text: 'Make'
+                font_size: 350*self.width/800
+                pos_hint: {'x': 0, 'y': -0.13}
+            Lbl:
+                text: '8'
+                font_size: 900*self.width/800
+        
+        # 各ボタン
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [0,100]
+            spacing: 50
+
+            MenuBtn:
+                text: 'はじめる'
+                on_release: root.manager.current = 'playing'
+                size_hint: (.3 , .15)
+                pos_hint: {'center_x': .5, 'center_y': .5} 
+            MenuBtn:
+                text: 'おわる'
+                on_release : app.stop()
+                size_hint: (.3 , .15)
+                pos_hint: {'center_x': .5, 'center_y': .5}

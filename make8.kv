@@ -1,0 +1,81 @@
+#:kivy 1.0
+#:include kv/design.kv
+#:include kv/title.kv
+
+<Playing>:
+    # 背景
+    canvas.before:
+        Color:
+            rgba: 17/255, 93/255, 140/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        spacing: 60
+        BoxLayout:
+            size_hint: ( 1 , 1.5)
+            MenuBtn:
+                text:'あきらめる'
+                size_hint: ( .2 , .2)
+                pos_hint: {'y': 0.8}
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [100,0]
+                Lbl:
+                    id: label1
+                    text:'question'
+                    font_size: 170*self.width/1600
+                    pos_hint: {'center_x': .38}
+                BgLbl:
+                    id: label2
+                    text:'input value'
+                    font_size: 170*self.width/1600
+                    size_hint_y: .5
+                    pos_hint: {'center_x': .38}
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                padding: [self.width/5, self.height/5, self.width/5, self.height/10]
+                spacing: 30
+                size_hint: ( 1 , .5)
+                pos_hint: {'center_x': .5}
+
+                GameBtn:
+                    id: button1
+                    text: 'one'
+                GameBtn:
+                    id: button2
+                    text: 'two'
+                GameBtn:
+                    id: button3
+                    text: 'three'
+                GameBtn:
+                    id: button4
+                    text: 'four'
+                GameBtn:
+                    text: 'DEL'
+
+            BoxLayout:
+                padding: [self.width/5, self.height/10, self.width/5, self.height/5]
+                spacing: 30
+                size_hint: ( 1 , .5)
+                pos_hint: {'center_x': .5}
+
+                GameBtn:
+                    text: '+'
+                GameBtn:
+                    text: '－'
+                GameBtn:
+                    text: '×'
+                GameBtn:
+                    text: '÷'
+                GameBtn:
+                    text: 'OK'
+
+
+
+
+

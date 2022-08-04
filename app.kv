@@ -1,4 +1,5 @@
 #:kivy 2.1.0
+
 <TitleScreen>:
     BoxLayout:
         BoxLayout:
@@ -26,21 +27,29 @@
                 size_hint_x:0.1
                 on_press: root.manager.current = 'retire'
             Label:
+                id: label1
                 text:'question'
             Label:
+                id: label2
                 text:'input value'
             BoxLayout:
                 size_hint_y: 0.2
                 Button:
+                    id: button1
                     text: 'one'
+                    on_press: root.onPress()
                 Button:
+                    id: button2
                     text: 'two'
                 Button:
+                    id: button3
                     text: 'three'
                 Button:
+                    id: button4
                     text: 'four'
                 Button:
                     text: 'Delete'
+                    on_press: root.manager.current = 'title'
 
             BoxLayout:
                 size_hint_y: 0.2
@@ -54,12 +63,13 @@
                     text: '/'
                 Button:
                     text: 'OK'
+                    on_press: root.manager.current = 'title'
 
 
-<WrongAnsScreen>
+<WrongAnsScreen>:
 
 
-<RetireScreen>
+<RetireScreen>:
     BoxLayout:
         BoxLayout:
             orientation: 'vertical'
@@ -76,7 +86,7 @@
                     text: 'Move to TitleView'
                     on_press: root.manager.current = 'title'
 
-<CorrectScreen>
+<CorrectScreen>:
     BoxLayout:
         BoxLayout:
             orientation: 'vertical'
@@ -92,7 +102,7 @@
                     text: 'Move to title'
                     on_press: root.manager.current = 'title'
 
-<AllCorrectScreen>
+<AllCorrectScreen>:
     BoxLayout:
         BoxLayout:
             orientation: 'vertical'
