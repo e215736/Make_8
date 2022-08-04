@@ -1,0 +1,53 @@
+#:kivy 1.0
+
+<Correct>:
+    # 背景
+    canvas.before:
+        Color:
+            rgba: 17/255, 93/255, 140/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+        Lbl:
+            text:'CLEAR!!'
+            font_size: 170*self.width/1600
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [0,100]
+            spacing: 50
+
+            MenuBtn:
+                text: '次の問題へ'
+                on_release: app.onClick('playing')
+                size_hint: (.3 , .15)
+                pos_hint: {'center_x': .5, 'center_y': .5} 
+            MenuBtn:
+                text: 'タイトルへ'
+                on_release : app.onClick('title')
+                size_hint: (.3 , .15)
+                pos_hint: {'center_x': .5, 'center_y': .5}
+
+<AllCorrect>:
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:'CONGRATULATIONS!!'
+                font_size: '100'
+                color: (1,0,0,1)
+
+            BoxLayout:
+                size_hint_y: 0.2
+                Button:
+                    text: 'タイトルへ'
+                    on_press: root.manager.current = 'title'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)

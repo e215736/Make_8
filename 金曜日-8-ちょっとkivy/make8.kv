@@ -1,0 +1,147 @@
+#:kivy 1.0
+#:include kv/design.kv
+#:include kv/title.kv
+#:include kv/retire.kv
+
+<Playing>:
+    # 背景
+    canvas.before:
+        Color:
+            rgba: 17/255, 93/255, 140/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        spacing: 60
+        BoxLayout:
+            size_hint: ( 1 , 1.5)
+            MenuBtn:
+                text:'あきらめる'
+                size_hint: ( .2 , .2)
+                pos_hint: {'y': 0.8}
+                on_release: root.onClick('retire')
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [100,0]
+                Lbl:
+                    id: question
+                    text:'question'
+                    font_size: 170*self.width/1600
+                    pos_hint: {'center_x': .38}
+                BgLbl:
+                    id: formula
+                    text:'input value'
+                    font_size: 170*self.width/1600
+                    size_hint_y: .5
+                    pos_hint: {'center_x': .38}
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                padding: [self.width/5, self.height/5, self.width/5, self.height/10]
+                spacing: 30
+                size_hint: ( 1 , .5)
+                pos_hint: {'center_x': .5}
+
+                GameBtn:
+                    id: btn1
+                    text: 'one'
+                    on_release: root.onBtn('1')
+                GameBtn:
+                    id: btn2
+                    text: 'two'
+                GameBtn:
+                    id: btn3
+                    text: 'three'
+                GameBtn:
+                    id: btn4
+                    text: 'four'
+                GameBtn:
+                    text: 'DEL'
+
+            BoxLayout:
+                padding: [self.width/5, self.height/10, self.width/5, self.height/5]
+                spacing: 30
+                size_hint: ( 1 , .5)
+                pos_hint: {'center_x': .5}
+
+                GameBtn:
+                    text: '+'
+                GameBtn:
+                    text: '－'
+                GameBtn:
+                    text: '×'
+                GameBtn:
+                    text: '÷'
+                GameBtn:
+                    text: 'OK'
+
+
+<Correct>:
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:'CLEAR!!'
+                font_size: '100'
+                color: (1,0,0,1)
+            BoxLayout:
+                size_hint_y: 0.4
+                Button:
+                    text: '次の問題'
+                    on_release: root.goNext()
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
+            BoxLayout:
+                size_hint_y: 0.4
+                Button:
+                    text: 'タイトルへ'
+                    on_press: root.manager.current = 'title'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
+
+<AllCorrectScreen>
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:'CONGRATULATIONS!!'
+                font_size: '100'
+                color: (1,0,0,1)
+
+            BoxLayout:
+                size_hint_y: 0.2
+                Button:
+                    text: 'タイトルへ'
+                    on_press: root.manager.current = 'title'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
+
+
+<MyPopup@Popup>:
+    auto_dismiss: False
+    size_hint: .5, .5
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    title: 'まだやれる！がんばれ！'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'your answer is wrong'
+        Button:
+            size_hint_y: None
+            height: 80
+            text: 'Close'
+            on_release: root.dismiss()

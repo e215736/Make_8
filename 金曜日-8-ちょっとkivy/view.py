@@ -1,3 +1,5 @@
+import set
+
 class View:
     def __init__(self, ui_framework): #コンストラクタ
         self.uiFramework = ui_framework
@@ -8,5 +10,6 @@ class View:
     def showButton(self,value):
         self.uiFramework.setButtonText(value) #screen.pyのsetButtonTextのtextにvalueを入れる
         
-    def showValue(self,value):
-        self.uiFramework.setDisplayInput(value) #screen.pyのtsetDisplayInputのtextにvalueを入れる
+    def showValue(self,list):
+        
+        self.uiFramework.setDisplayInput(list) #screen.pyのtsetDisplayInputのtextにvalueを入れる

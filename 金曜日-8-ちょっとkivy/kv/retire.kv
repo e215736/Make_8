@@ -1,6 +1,6 @@
 #:kivy 1.0
 
-<Title>:
+<Retire>:
     # 背景
     canvas.before:
         Color:
@@ -13,25 +13,27 @@
         size: root.size
 
         BoxLayout:
-            padding: [400,0]
-            # タイトル文字
+            orientation: 'vertical'
+            size: root.size
             Lbl:
-                text: 'Make'
-                font_size: 350*self.width/800
-                pos_hint: {'x': 0, 'y': -0.13}
+                text:'答えは...'
+                font_size: 70*self.width/1600
             Lbl:
-                text: '8'
-                font_size: 900*self.width/800
+                text:'2+2+2+2'
+                font_size: 170*self.width/1600
+
+            Lbl:
+                text:'(他にも答えがあるかもしれません)'
+                font_size: 50*self.width/1600
         
-        # 各ボタン
         BoxLayout:
             orientation: 'vertical'
             padding: [0,100]
             spacing: 50
 
             MenuBtn:
-                text: 'はじめる'
-                on_release: app.onClick('playing')
+                text: 'タイトルへ'
+                on_release: root.onClick('title')
                 size_hint: (.3 , .15)
                 pos_hint: {'center_x': .5, 'center_y': .5} 
             MenuBtn:

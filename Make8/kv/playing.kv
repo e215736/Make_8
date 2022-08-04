@@ -1,0 +1,81 @@
+#:kivy 1.0
+
+<Playing>:
+    # 背景
+    canvas.before:
+        Color:
+            rgba: 17/255, 93/255, 140/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        spacing: 60
+        BoxLayout:
+            size_hint: ( 1 , 1.5)
+            MenuBtn:
+                text:'あきらめる'
+                size_hint: ( .2 , .2)
+                pos_hint: {'y': 0.8}
+                on_release: app.onClick('retire')
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [100,0]
+                Lbl:
+                    id: question
+                    text:''
+                    font_size: 170*self.width/1600
+                    pos_hint: {'center_x': .38}
+                BgLbl:
+                    id: formula
+                    text:''
+                    font_size: 170*self.width/1600
+                    size_hint_y: .5
+                    pos_hint: {'center_x': .38}
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                padding: [self.width/5, self.height/5, self.width/5, self.height/10]
+                spacing: 30
+                size_hint: ( 1 , .5)
+                pos_hint: {'center_x': .5}
+
+                GameBtn:
+                    id: btn1
+                    on_release: app.onBtn(1)
+                GameBtn:
+                    id: btn2
+                    on_release: app.onBtn(2)
+                GameBtn:
+                    id: btn3
+                    on_release: app.onBtn(3)
+                GameBtn:
+                    id: btn4
+                    on_release: app.onBtn(4)
+                GameBtn:
+                    text: 'DEL'
+                    on_release: app.onBtn('del')
+
+            BoxLayout:
+                padding: [self.width/5, self.height/10, self.width/5, self.height/5]
+                spacing: 30
+                size_hint: ( 1 , .5)
+                pos_hint: {'center_x': .5}
+
+                GameBtn:
+                    text: '+'
+                    on_release: app.onBtn('+')
+                GameBtn:
+                    text: '－'
+                    on_release: app.onBtn('－')
+                GameBtn:
+                    text: '×'
+                    on_release: app.onBtn('×')
+                GameBtn:
+                    text: '÷'
+                    on_release: app.onBtn('÷')
+                GameBtn:
+                    text: 'OK'
+                    on_release: app.onBtn('ok')

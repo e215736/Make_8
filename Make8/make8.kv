@@ -1,82 +1,59 @@
 #:kivy 1.0
-#:include kv/design.kv
 #:include kv/title.kv
+#:include kv/retire.kv
+#:include kv/playing.kv
+#:include kv/correct.kv
 
-<Playing>:
-    # 背景
-    canvas.before:
-        Color:
-            rgba: 17/255, 93/255, 140/255, 1
-        Rectangle:
-            pos: self.pos
-            size: self.size
-    
+
+<Failpopup>:
+    auto_dismiss: False
+    size_hint: .5, .5
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    title: 'まだやれる！がんばれ！'
     BoxLayout:
         orientation: 'vertical'
-        size: root.size
-        spacing: 60
-        BoxLayout:
-            size_hint: ( 1 , 1.5)
-            MenuBtn:
-                text:'あきらめる'
-                size_hint: ( .2 , .2)
-                pos_hint: {'y': 0.8}
-                on_release: root.onClick('retire')
-            BoxLayout:
-                orientation: 'vertical'
-                padding: [100,0]
-                Lbl:
-                    id: label1
-                    text:'question'
-                    font_size: 170*self.width/1600
-                    pos_hint: {'center_x': .38}
-                BgLbl:
-                    id: label2
-                    text:'input value'
-                    font_size: 170*self.width/1600
-                    size_hint_y: .5
-                    pos_hint: {'center_x': .38}
-        BoxLayout:
-            orientation: 'vertical'
-            BoxLayout:
-                padding: [self.width/5, self.height/5, self.width/5, self.height/10]
-                spacing: 30
-                size_hint: ( 1 , .5)
-                pos_hint: {'center_x': .5}
+        Label:
+            text: 'Your answer is wrong'
+        Button:
+            size_hint_y: None
+            height: 80
+            text: 'とじる'
+            on_release: root.dismiss()
 
-                GameBtn:
-                    id: button1
-                    text: 'one'
-                GameBtn:
-                    id: button2
-                    text: 'two'
-                GameBtn:
-                    id: button3
-                    text: 'three'
-                GameBtn:
-                    id: button4
-                    text: 'four'
-                GameBtn:
-                    text: 'DEL'
+# ボタンデザイン
+<Btn@Button>:
+    background_color:(0,0,0,0)
+    background_normal:''
+    text_size: self.width, None
+    halign: 'center'
+    canvas.before:
+        Color:
+            rgba:(5/255,219/255,242/255,1) if self.state=='down' else (11/255,59/255,89/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius:[18]
 
-            BoxLayout:
-                padding: [self.width/5, self.height/10, self.width/5, self.height/5]
-                spacing: 30
-                size_hint: ( 1 , .5)
-                pos_hint: {'center_x': .5}
+<MenuBtn@Btn>:
+    font_size: 170*self.width/1600
 
-                GameBtn:
-                    text: '+'
-                GameBtn:
-                    text: '－'
-                GameBtn:
-                    text: '×'
-                GameBtn:
-                    text: '÷'
-                GameBtn:
-                    text: 'OK'
+<GameBtn@Btn>:
+    font_size: 120*self.width/400
 
+# ラベルデザイン
+<Lbl@Label>:
+    color: 240/255, 241/255, 242/255, 1
 
+# 背景付きラベル
+<BackgroundColor@Widget>:
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
 
-
-<Retire>:
+<BgLbl@Label+BackgroundColor>:
+    background_color: 240/255, 241/255, 242/255, 1
+    color: 11/255, 59/255, 89/255, 1
