@@ -29,7 +29,7 @@ class MainScreen(Screen):
     def setDisplayFormula(self,text): #問題を画面（問題欄）に表示
         self.ids.label1.text = text
         
-    def setButtonText(self,text): #問題
+    def setButtonText(self,text): #問題の式をボタンに表示
         b1 = text[0]
         b2 = text[1]
         b3 = text[2]
@@ -40,11 +40,11 @@ class MainScreen(Screen):
         self.ids.button4.text = b4
         
           
-    def onPress(self): #ボタンが押された際にそのボタンのtextを画面（回答欄）に表示
+    def onPress(self): #ボタンが押された際にそのボタンのtextをcontorollerのonPressに送る
         text = self.ids.button1.text
-        self.controller.onPress(text)
+        self.controller.onPress(text) #contorollerに通知
         
-    def setDisplayInput(self,text):
+    def setDisplayInput(self,text): #ボタンが押された際にそのボタンのtextを画面（回答欄）に表示
         self.ids.label2.text += text
         
         

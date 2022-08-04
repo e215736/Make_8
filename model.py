@@ -11,7 +11,7 @@ class Model:
     def setButton(self): #式を入力
         self.view.showButton(self.value) #viewへ通知
         
-    def setValue(self,value):
+    def setValue(self,value): #値を入力
         self.view.showValue(value)
         
     
