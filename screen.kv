@@ -1,19 +1,35 @@
-#:kivy 1.0
+#:kivy 1.1
+#:import Factory kivy.factory.Factory
+
 <TitleScreen>:
     BoxLayout:
         BoxLayout:
             orientation: 'vertical'
             size: root.size
             Label:
-                text:'make8'
+                text:'Make8'
+                font_size: '200'
             BoxLayout:
+                size_hint_y: 0.5
                 Button:
                     text: 'Move to MainView'
+                    font_size: '100'
                     on_press: root.manager.current = 'main'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
+                
             BoxLayout:
+                size_hint_y: 0.5
                 Button:
                     text: 'Close'
+                    font_size: '100'
                     on_press : app.stop()
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
 
 <MainScreen>:
     BoxLayout:
@@ -21,42 +37,93 @@
             orientation: 'vertical'
             size: root.size
             Button:
-                text:'retire'
+                text:'give up'
                 size_hint_y:0.1
                 size_hint_x:0.1
                 on_press: root.manager.current = 'retire'
+                background_normal: ""
+                #RGBA
+                background_color: (1,0,0,1)
             Label:
                 text:'question'
             Label:
                 text:'input value'
             BoxLayout:
-                size_hint_y: 0.2
+                size_hint_y: 0.5
                 Button:
-                    text: 'one'
+                    text: '1'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
-                    text: 'two'
+                    text: '2'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
-                    text: 'three'
+                    text: '3'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
-                    text: 'four'
+                    text: '4'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
-                    text: 'Delete'
+                    text: 'DEL'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
 
             BoxLayout:
-                size_hint_y: 0.2
+                size_hint_y: 0.5
                 Button:
                     text: '+'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
                     text: '-'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
                     text: '*'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
                     text: '/'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
                 Button:
                     text: 'OK'
-
-
-<WrongAnsScreen>
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    on_release: Factory.MyPopup().open()
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
 
 
 <RetireScreen>
@@ -65,16 +132,29 @@
             orientation: 'vertical'
             size: root.size
             Label:
-                text:'答えは'
+                text:'答えは...'
+                font_size: '70'
+                color: (1,0,0,1)
             Label:
                 text:'2+2+2+2'
+                font_size: '70'
+                color: (1,0,0,1)
+
             Label:
-                text:'他にも答えがあるかもしれません'
+                text:'(他にも答えがあるかもしれません)'
+                font_size: '70'
+                color: (1,0,0,1)
+
             BoxLayout:
 
                 Button:
                     text: 'Move to TitleView'
                     on_press: root.manager.current = 'title'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
 
 <CorrectScreen>
     BoxLayout:
@@ -82,15 +162,29 @@
             orientation: 'vertical'
             size: root.size
             Label:
-                text:'Clear!!'
+                text:'CLEAR!!'
+                font_size: '100'
+                color: (1,0,0,1)
             BoxLayout:
+                size_hint_y: 0.4
                 Button:
-                    text: 'Move to MainView'
+                    text: 'move to next question'
                     on_press: root.manager.current = 'main'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
             BoxLayout:
+                size_hint_y: 0.4
                 Button:
                     text: 'Move to title'
                     on_press: root.manager.current = 'title'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
 
 <AllCorrectScreen>
     BoxLayout:
@@ -98,11 +192,33 @@
             orientation: 'vertical'
             size: root.size
             Label:
-                text:'Congratulations!!'
+                text:'CONGRATULATIONS!!'
+                font_size: '100'
+                color: (1,0,0,1)
 
             BoxLayout:
+                size_hint_y: 0.2
                 Button:
                     text: 'Move to title'
                     on_press: root.manager.current = 'title'
+                    font_size: '100'
+                    color: 0, 0, 2, 1
+                    background_normal: ""
+                    #RGBA
+                    background_color: (41/255,231/255,205/255,1)
 
+<MyPopup@Popup>:
+    auto_dismiss: False
+    size_hint: .5, .5
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    title: 'まだやれる！がんばれ！'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'your answer is wrong'
+        Button:
+            size_hint_y: None
+            height: 80
+            text: 'Close'
+            on_release: root.dismiss()
 

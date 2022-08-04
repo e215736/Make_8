@@ -22,8 +22,6 @@ class TitleScreen(Screen):
 class MainScreen(Screen):
     pass
 
-class WrongAnsScreen(Screen):
-    pass
 
 class RetireScreen(Screen):
     pass
@@ -39,7 +37,6 @@ class ScreenApp(App):
         self.sm = ScreenManager()
         self.sm.add_widget(TitleScreen(name='title'))
         self.sm.add_widget(MainScreen(name='main'))
-        self.sm.add_widget(WrongAnsScreen(name='wrong'))
         self.sm.add_widget(RetireScreen(name='retire'))
         self.sm.add_widget(CorrectScreen(name='correct'))
         self.sm.add_widget(AllCorrectScreen(name='all'))
