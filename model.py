@@ -11,9 +11,17 @@ class Model:
     def setButton(self): #式を入力
         self.view.showButton(self.value) #viewへ通知
         
-    
+    def setValue(self,value):
+        self.view.showValue(value)
         
     
+    def calculate(): #計算をする
+        pass
     
+    def coiseFormula(): #問題をランダムに選択
+        pass
+    
+    def judgement(): #正誤判定
+        pass
 
          
